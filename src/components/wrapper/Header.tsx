@@ -30,6 +30,14 @@ const Header = () => {
             home
           </NavLink>
           <NavLink
+            to='/stat'
+            className={({ isActive }) =>
+              isActive ? 'text-green-700' : 'hover:text-blue-300'
+            }
+          >
+            stats
+          </NavLink>
+          <NavLink
             to='/about'
             className={({ isActive }) =>
               isActive ? 'text-green-700' : 'hover:text-blue-300'
@@ -37,14 +45,6 @@ const Header = () => {
             end
           >
             about
-          </NavLink>
-          <NavLink
-            to='/stat'
-            className={({ isActive }) =>
-              isActive ? 'text-green-700' : 'hover:text-blue-300'
-            }
-          >
-            stats
           </NavLink>
         </nav>
       </nav>

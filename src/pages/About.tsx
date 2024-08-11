@@ -1,10 +1,11 @@
 import CustomLi from '@/components/ui/CustomLi';
+import PageTitle from '@/components/ui/PageTitle';
 import { techNames } from '@/utils/consts';
 
 const About = () => {
   return (
     <section className='flex flex-col w-full h-full items-center justify-evenly'>
-      <h1 className='text-6xl font-extrabold'>about Typ3Tr4in</h1>
+      <PageTitle pageTitle='About Typ3Tr4in' />
       <div className='h-full w-full flex flex-col items-center justify-evenly'>
         <h2 className='text-2xl font-bold'>
           This application can test and help you improve your typing speed
