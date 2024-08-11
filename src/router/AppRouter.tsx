@@ -1,4 +1,9 @@
-import { Outlet, Route, Routes } from 'react-router-dom';
+import Main from '@/layouts/Main';
+import About from '@/pages/About';
+import Error from '@/pages/Error';
+import Home from '@/pages/Home';
+import Stat from '@/pages/Stat';
+import { Route, Routes } from 'react-router-dom';
 
 const AppRouter = () => {
   return (
@@ -7,15 +12,15 @@ const AppRouter = () => {
         path='/'
         element={
           <div>
-            main layout <Outlet />
+            <Main />
           </div>
         }
       >
         <Route />
-        <Route path='/' index element={<div>trainer</div>} />
-        <Route path='/about' element={<div>about</div>} />
-        <Route path='/stat' element={<div>stats</div>} />
-        <Route path='*' element={<div>not found 404...</div>} />
+        <Route path='/' index element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/stat' element={<Stat />} />
+        <Route path='*' element={<Error />} />
       </Route>
     </Routes>
   );
