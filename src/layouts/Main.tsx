@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <div className='h-screen w-screen flex flex-col justify-between bg-stone-700 text-yellow-200'>
       <Header />
-      <div className='overflow-auto py-2 h-[85%] border-y-2 border-teal-800'>
+      <div className='py-2 h-[90%] border-y-2 border-yellow-200'>
         <Outlet />
       </div>
       <Footer />
