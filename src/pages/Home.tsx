@@ -1,5 +1,7 @@
+import TypingBox from '@/components/trainer/TypingBox';
+
 const Home = () => {
-  return <div>Home</div>;
+  return <TypingBox />;
 };
 
 export default Home;
