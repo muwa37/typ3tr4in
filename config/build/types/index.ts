@@ -4,6 +4,7 @@ export interface BuildPaths {
   output: string;
   src: string;
   public: string;
+  favicon: string;
   env: string;
 }
 

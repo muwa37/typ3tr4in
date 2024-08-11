@@ -22,7 +22,7 @@ export function buildPlugins({
   const plugins: Configuration['plugins'] = [
     new HtmlWebpackPlugin({
       template: paths.html,
-      favicon: path.resolve(paths.public, 'favicon.ico'),
+      favicon: paths.favicon,
     }),
     new DotEnvPlugin({
       path: paths.env,

@@ -18,6 +18,7 @@ export default (env: EnvVariables) => {
     html: path.resolve(__dirname, 'public', 'index.html'),
     src: path.resolve(__dirname, 'src'),
     public: path.resolve(__dirname, 'public'),
+    favicon: path.resolve(__dirname, 'public', 'favico.ico'),
     env: path.resolve(__dirname, '.env'),
   };
 
