@@ -22,21 +22,27 @@ const Header = () => {
         <nav className='w-1/6 flex items-center justify-evenly'>
           <NavLink
             to='/'
-            className={({ isActive }) => (isActive ? 'text-green-700' : '')}
+            className={({ isActive }) =>
+              isActive ? 'text-green-700' : 'hover:text-blue-300'
+            }
             end
           >
             home
           </NavLink>
           <NavLink
             to='/about'
-            className={({ isActive }) => (isActive ? 'text-green-700' : '')}
+            className={({ isActive }) =>
+              isActive ? 'text-green-700' : 'hover:text-blue-300'
+            }
             end
           >
             about
           </NavLink>
           <NavLink
             to='/stat'
-            className={({ isActive }) => (isActive ? 'text-green-700' : '')}
+            className={({ isActive }) =>
+              isActive ? 'text-green-700' : 'hover:text-blue-300'
+            }
           >
             stats
           </NavLink>

@@ -1,5 +1,71 @@
+import CustomLi from '@/components/ui/CustomLi';
+import { selectStats } from '@/store/stat/selectors';
+import { clearStats } from '@/store/stat/slice';
+import { useDispatch, useSelector } from 'react-redux';
+
 const Stat = () => {
-  return <div>Stat</div>;
+  const dispatch = useDispatch();
+  const stat = useSelector(selectStats);
+
+  const onClearClick = () => {
+    dispatch(clearStats());
+  };
+
+  return (
+    <section className='flex flex-col w-full h-full items-center justify-evenly'>
+      <h1>Statistics</h1>
+      <div>
+        <div>
+          <h2>Last attempt stats</h2>
+          <ul>
+            <CustomLi
+              liTitle='WPM'
+              liText={stat.lastAttemptStats.WPM.toString()}
+            />
+
+            <CustomLi
+              liTitle='Accuracy'
+              liText={stat.lastAttemptStats.accuracy.toString()}
+            />
+          </ul>
+
+          <div>
+            <h2>Summary WPM stats</h2>
+            <ul>
+              <CustomLi liTitle='Best WPM' liText={stat.bestWPM.toString()} />
+              <CustomLi liTitle='Average WPM' liText={stat.avgWPM.toString()} />
+              <CustomLi liTitle='Worst WPM' liText={stat.worstWPM.toString()} />
+            </ul>
+          </div>
+
+          <div>
+            <h2>Summary Accuracy stats</h2>
+            <ul>
+              <CustomLi
+                liTitle='Best Accuracy'
+                liText={stat.bestAccuracy.toString()}
+              />
+              <CustomLi
+                liTitle='Average Accuracy'
+                liText={stat.avgAccuracy.toString()}
+              />
+              <CustomLi
+                liTitle='Worst Accuracy'
+                liText={stat.worstAccuracy.toString()}
+              />
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <button
+        className='m-3 p-3 border-2 rounded-md border-red-300 text-red-300 hover:border-blue-300 hover:text-blue-300 flex items-center justify-center italic'
+        onClick={onClearClick}
+      >
+        clear stats
+      </button>
+    </section>
+  );
 };
 
 export default Stat;

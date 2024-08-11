@@ -8,7 +8,7 @@ const initialState: {
   bestAccuracy: number;
   avgAccuracy: number;
   worstAccuracy: number;
-  lastTryStats: {
+  lastAttemptStats: {
     WPM: number;
     accuracy: number;
   };
@@ -20,7 +20,7 @@ const initialState: {
   bestAccuracy: 0,
   avgAccuracy: 0,
   worstAccuracy: 0,
-  lastTryStats: {
+  lastAttemptStats: {
     WPM: 0,
     accuracy: 0,
   },
@@ -38,14 +38,14 @@ const modeSlice = createSlice({
       state.bestAccuracy = 0;
       state.avgAccuracy = 0;
       state.worstAccuracy = 0;
-      state.lastTryStats.WPM = 0;
-      state.lastTryStats.accuracy = 0;
+      state.lastAttemptStats.WPM = 0;
+      state.lastAttemptStats.accuracy = 0;
     },
     modifyStats(
       state,
       action: PayloadAction<{ WPM: number; accuracy: number }>
     ) {
-      state.lastTryStats = action.payload;
+      state.lastAttemptStats = action.payload;
 
       state.attemptCount += 1;
 

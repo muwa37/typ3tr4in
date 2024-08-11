@@ -1,4 +1,5 @@
 import { RootState } from '..';
 
-export const selectLastTryStats = (state: RootState) => state.stat.lastTryStats;
+export const selectLastAttemptStats = (state: RootState) =>
+  state.stat.lastAttemptStats;
 export const selectStats = (state: RootState) => state.stat;
