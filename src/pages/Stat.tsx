@@ -1,3 +1,4 @@
+import CustomButton from '@/components/ui/CustomButton';
 import CustomLi from '@/components/ui/CustomLi';
 import PageTitle from '@/components/ui/PageTitle';
 import { selectStats } from '@/store/stat/selectors';
@@ -59,12 +60,7 @@ const Stat = () => {
         </div>
       </div>
 
-      <button
-        className='m-3 p-3 border-2 rounded-md border-red-300 text-red-300 hover:border-blue-300 hover:text-blue-300 flex items-center justify-center italic'
-        onClick={onClearClick}
-      >
-        clear stats
-      </button>
+      <CustomButton onClickFn={onClearClick} buttonText='clear stats' />
     </section>
   );
 };

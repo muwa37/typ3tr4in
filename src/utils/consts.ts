@@ -5,3 +5,5 @@ export const techNames = [
   'Webpack',
   'TailWind',
 ];
+
+export const timeMods = [15, 30, 60, 120];

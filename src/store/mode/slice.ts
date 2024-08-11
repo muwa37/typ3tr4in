@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: { time: number } = {
-  time: 15,
+const initialState: { timeMode: number } = {
+  timeMode: 15,
 };
 
 const modeSlice = createSlice({
@@ -9,7 +9,7 @@ const modeSlice = createSlice({
   initialState,
   reducers: {
     setTimeMode(state, action: PayloadAction<number>) {
-      state.time = action.payload;
+      state.timeMode = action.payload;
     },
   },
 });
