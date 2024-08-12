@@ -3,10 +3,13 @@ import { setTimeMode } from '@/store/mode/slice';
 import { selectText } from '@/store/text/selectors';
 import { setText } from '@/store/text/slice';
 import { TimeMode } from '@/types/common';
-import { timeMods } from '@/utils/consts';
+
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CustomButton from '../ui/CustomButton';
+import TrainerMenu from './TrainerMenu';
+import UserTypings from './UserTypings';
+import Words from './Words';
+import WordsContainer from './WordsContainer';
 
 const TypingBox = () => {
   const dispatch = useDispatch();
@@ -14,52 +17,40 @@ const TypingBox = () => {
   const selectedTimeMode = useSelector(selectTime);
 
   const [trainerText, setTrainerText] = useState('');
+  const [countdown, setCountdown] = useState(selectedTimeMode);
 
   useEffect(() => {
     setTrainerText(generatedText.text);
-  });
+  }, []);
 
   const onSelectTimeModeClick = (timeMode: TimeMode) => {
     dispatch(setTimeMode(timeMode));
     dispatch(setText());
+    setCountdown(timeMode);
+    setTrainerText(generatedText.text);
   };
   const onGenerateNewTextClick = () => {
     dispatch(setText());
+    setTrainerText(generatedText.text);
   };
 
   return (
     <div className='h-full flex flex-col justify-center items-center'>
-      <div className='max-w-[1000px] h-2/3 m-auto overflow-hidden '>
-        <div className='w-full flex items-center justify-between py-2'>
-          <div className=' flex items-center justify-start'>
-            <h2 className='pr-2 italic text-red-300'>select time mode: </h2>
-            <ul className='flex'>
-              {timeMods.map((timeMode) => (
-                <li>
-                  <CustomButton
-                    onClickFn={() => onSelectTimeModeClick(timeMode)}
-                    buttonText={timeMode.toString()}
-                    isActive={timeMode === selectedTimeMode}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <CustomButton
-            onClickFn={onGenerateNewTextClick}
-            buttonText='New text'
+      <div className='max-w-[1000px] h-2/3 m-auto'>
+        <TrainerMenu
+          countdown={countdown}
+          onSelectTimeModeClick={onSelectTimeModeClick}
+          selectedTimeMode={selectedTimeMode}
+          onGenerateNewTextClick={onGenerateNewTextClick}
+        />
+        <WordsContainer>
+          <Words trainerText={trainerText} />
+          <UserTypings
+            userInput='However, as'
+            words={trainerText}
+            className='absolute inset-0'
           />
-        </div>
-
-        <div className='text-3xl  h-[300px] flex flex-wrap '>
-          {trainerText.split(' ').map((word) => (
-            <span className='mr-1 pr-1'>
-              {word.split('').map((char) => (
-                <span>{char}</span>
-              ))}
-            </span>
-          ))}
-        </div>
+        </WordsContainer>
       </div>
     </div>
   );
