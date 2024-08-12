@@ -2,6 +2,7 @@ import { selectTime } from '@/store/mode/selectors';
 import { setTimeMode } from '@/store/mode/slice';
 import { selectText } from '@/store/text/selectors';
 import { setText } from '@/store/text/slice';
+import { TimeMode } from '@/types/common';
 import { timeMods } from '@/utils/consts';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +19,7 @@ const TypingBox = () => {
     setTrainerText(generatedText.text);
   });
 
-  const onSelectTimeModeClick = (timeMode: number) => {
+  const onSelectTimeModeClick = (timeMode: TimeMode) => {
     dispatch(setTimeMode(timeMode));
     dispatch(setText());
   };
@@ -29,7 +30,7 @@ const TypingBox = () => {
   return (
     <div className='h-full flex flex-col justify-center items-center'>
       <div className='max-w-[1000px] h-2/3 m-auto overflow-hidden '>
-        <div className='w-full flex items-center justify-evenly p-2'>
+        <div className='w-full flex items-center justify-between py-2'>
           <div className=' flex items-center justify-start'>
             <h2 className='pr-2 italic text-red-300'>select time mode: </h2>
             <ul className='flex'>

@@ -1,3 +1,5 @@
+import { TimeMode } from '@/types/common';
+
 export const techNames = [
   'TypeScript',
   'React',
@@ -6,4 +8,4 @@ export const techNames = [
   'TailWind',
 ];
 
-export const timeMods = [15, 30, 60, 120];
+export const timeMods: Array<TimeMode> = [15, 30, 60, 120];

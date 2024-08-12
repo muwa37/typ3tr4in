@@ -1,18 +1,8 @@
+import { LastAttemptStats } from '@/types/common';
+import { StatState } from '@/types/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: {
-  attemptCount: number;
-  bestWPM: number;
-  avgWPM: number;
-  worstWPM: number;
-  bestAccuracy: number;
-  avgAccuracy: number;
-  worstAccuracy: number;
-  lastAttemptStats: {
-    WPM: number;
-    accuracy: number;
-  };
-} = {
+const initialState: StatState = {
   attemptCount: 0,
   bestWPM: 0,
   avgWPM: 0,
@@ -41,10 +31,7 @@ const modeSlice = createSlice({
       state.lastAttemptStats.WPM = 0;
       state.lastAttemptStats.accuracy = 0;
     },
-    modifyStats(
-      state,
-      action: PayloadAction<{ WPM: number; accuracy: number }>
-    ) {
+    modifyStats(state, action: PayloadAction<LastAttemptStats>) {
       state.lastAttemptStats = action.payload;
 
       state.attemptCount += 1;
