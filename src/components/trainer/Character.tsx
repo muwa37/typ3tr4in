@@ -12,7 +12,7 @@ const Character = ({
     <span
       className={`${!isCorrect && !isWhiteSpace && 'text-red-500'} 
         ${isCorrect && !isWhiteSpace && 'text-lime-700'} 
-        ${!isCorrect && isWhiteSpace && 'bg-red-500-50'}`}
+       `}
     >
       {expected}
     </span>

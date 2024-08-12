@@ -1,53 +1,44 @@
 import { selectTime } from '@/store/mode/selectors';
 import { setTimeMode } from '@/store/mode/slice';
-import { selectText } from '@/store/text/selectors';
-import { setText } from '@/store/text/slice';
 import { TimeMode } from '@/types/common';
 
-import { useEffect, useState } from 'react';
+import useEngine from '@/hooks/useEngine';
 import { useDispatch, useSelector } from 'react-redux';
-import TrainerMenu from './TrainerMenu';
+import Menu from './Menu';
 import UserTypings from './UserTypings';
 import Words from './Words';
 import WordsContainer from './WordsContainer';
 
-const TypingBox = () => {
+const Trainer = () => {
   const dispatch = useDispatch();
-  const generatedText = useSelector(selectText);
   const selectedTimeMode = useSelector(selectTime);
 
-  const [trainerText, setTrainerText] = useState('');
-  const [countdown, setCountdown] = useState(selectedTimeMode);
-
-  useEffect(() => {
-    setTrainerText(generatedText.text);
-  }, []);
+  const { trainerState, words, typed, timeLeft, errors, reset, totalTyped } =
+    useEngine();
 
   const onSelectTimeModeClick = (timeMode: TimeMode) => {
     dispatch(setTimeMode(timeMode));
-    dispatch(setText());
-    setCountdown(timeMode);
-    setTrainerText(generatedText.text);
+    reset();
   };
   const onGenerateNewTextClick = () => {
-    dispatch(setText());
-    setTrainerText(generatedText.text);
+    reset();
   };
 
   return (
     <div className='h-full flex flex-col justify-center items-center'>
       <div className='max-w-[1000px] h-2/3 m-auto'>
-        <TrainerMenu
-          countdown={countdown}
+        <Menu
+          trainerState={trainerState}
+          timeLeft={timeLeft}
           onSelectTimeModeClick={onSelectTimeModeClick}
-          selectedTimeMode={selectedTimeMode}
           onGenerateNewTextClick={onGenerateNewTextClick}
+          selectedTimeMode={selectedTimeMode}
         />
         <WordsContainer>
-          <Words trainerText={trainerText} />
+          <Words key={words} trainerText={words} />
           <UserTypings
-            userInput='However, as'
-            words={trainerText}
+            userInput={typed}
+            words={words}
             className='absolute inset-0'
           />
         </WordsContainer>
@@ -56,4 +47,4 @@ const TypingBox = () => {
   );
 };
 
-export default TypingBox;
+export default Trainer;

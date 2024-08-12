@@ -1,24 +1,33 @@
-import { TimeMode } from '@/types/common';
+import { TimeMode, TrainerState } from '@/types/common';
 import { timeMods } from '@/utils/consts';
 import CustomButton from '../ui/CustomButton';
 
 type Props = {
-  countdown: number;
+  trainerState: TrainerState;
+  timeLeft: number;
   onSelectTimeModeClick: (timeMode: TimeMode) => void;
   selectedTimeMode: TimeMode;
   onGenerateNewTextClick: () => void;
 };
 
-const TrainerMenu = ({
-  countdown,
+const Menu = ({
+  trainerState,
+  timeLeft,
   onSelectTimeModeClick,
   selectedTimeMode,
   onGenerateNewTextClick,
 }: Props) => {
+  console.log();
   return (
     <div className='w-full flex items-center justify-between py-2'>
-      <p className='border-red-300 border-2 size-12 rounded-full text-red-300 flex items-center justify-center italic'>
-        {countdown}
+      <p
+        className={` border-2 size-12 rounded-full  flex items-center justify-center italic ${
+          trainerState === 'run'
+            ? ' border-blue-300 text-blue-300'
+            : 'border-red-300 text-red-300'
+        }`}
+      >
+        {timeLeft}
       </p>
       <div className=' flex items-center justify-start'>
         <h2 className='pr-2 italic text-red-300'>select time mode: </h2>
@@ -39,4 +48,4 @@ const TrainerMenu = ({
   );
 };
 
-export default TrainerMenu;
+export default Menu;

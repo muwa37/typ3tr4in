@@ -4,3 +4,5 @@ export type LastAttemptStats = {
   WPM: number;
   accuracy: number;
 };
+
+export type TrainerState = 'start' | 'run' | 'end';
