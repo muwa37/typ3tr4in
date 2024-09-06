@@ -1,6 +1,6 @@
 import { selectText } from '@/store/text/selectors';
 import { setText } from '@/store/text/slice';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const useWords = () => {
@@ -9,10 +9,13 @@ const useWords = () => {
 
   const [words, setWords] = useState<string>(generatedText.text);
 
+  useEffect(() => {
+    setWords(generatedText.text);
+  }, [generatedText.text]);
+
   const updateWords = useCallback(() => {
     dispatch(setText());
-    setWords(generatedText.text);
-  }, [words.split(' ').length, generatedText.text]);
+  }, [dispatch]);
 
   return { words, updateWords };
 };

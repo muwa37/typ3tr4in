@@ -12,15 +12,20 @@ const useTypings = (enabled: boolean) => {
         return;
       }
 
-      switch (key) {
+      switch (code) {
         case 'Backspace':
-          setTyped((prev) => prev.slice(0, -1));
-          setCursor((cursor) => cursor - 1);
-          totalTyped.current -= 1;
+          setTyped(prev => prev.slice(0, -1));
+          setCursor(cursor => Math.max(cursor - 1, 0));
+          totalTyped.current = Math.max(totalTyped.current - 1, 0);
+          break;
+        case 'Space':
+          setTyped(prev => prev.concat(' '));
+          setCursor(cursor => cursor + 1);
+          totalTyped.current += 1;
           break;
         default:
-          setTyped((prev) => prev.concat(key));
-          setCursor((cursor) => cursor + 1);
+          setTyped(prev => prev.concat(key));
+          setCursor(cursor => cursor + 1);
           totalTyped.current += 1;
       }
     },
