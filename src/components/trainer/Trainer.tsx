@@ -3,6 +3,7 @@ import { setTimeMode } from '@/store/mode/slice';
 import { TimeMode } from '@/types/common';
 
 import useEngine from '@/hooks/useEngine';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Menu from './Menu';
 import UserTypings from './UserTypings';
@@ -16,13 +17,19 @@ const Trainer = () => {
   const { trainerState, words, typed, timeLeft, errors, reset, totalTyped } =
     useEngine();
 
-  const onSelectTimeModeClick = (timeMode: TimeMode) => {
-    dispatch(setTimeMode(timeMode));
+  const onSelectTimeModeClick = useCallback(
+    (timeMode: TimeMode) => {
+      if (timeMode !== selectedTimeMode) {
+        dispatch(setTimeMode(timeMode));
+        reset();
+      }
+    },
+    [dispatch, selectedTimeMode, reset]
+  );
+
+  const onGenerateNewTextClick = useCallback(() => {
     reset();
-  };
-  const onGenerateNewTextClick = () => {
-    reset();
-  };
+  }, [reset]);
 
   return (
     <div className='h-full flex flex-col justify-center items-center'>
@@ -35,7 +42,7 @@ const Trainer = () => {
           selectedTimeMode={selectedTimeMode}
         />
         <WordsContainer>
-          <Words key={words} trainerText={words} />
+          <Words trainerText={words} />
           <UserTypings
             userInput={typed}
             words={words}

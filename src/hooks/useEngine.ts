@@ -27,9 +27,9 @@ const useEngine = () => {
     resetTotalTyped();
     setTrainerState('start');
     setErrors(0);
-    updateWords();
     clearTyped();
-  }, [clearTyped, resetCountdown, resetTotalTyped, updateWords]);
+    updateWords();
+  }, [resetCountdown, resetTotalTyped, clearTyped, updateWords]);
 
   const sumErrors = useCallback(() => {
     const wordsReached = words.substring(0, Math.min(cursor, words.length));
