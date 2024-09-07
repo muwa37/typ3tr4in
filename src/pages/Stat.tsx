@@ -15,17 +15,19 @@ const Stat = () => {
   };
 
   return (
-    <section className='flex flex-col w-full h-full items-center justify-evenly'>
+    <section className='flex flex-col w-full h-full items-center justify-evenly px-4'>
       <PageTitle pageTitle='Statistics' />
-      <div className='flex w-full h-full items-center justify-evenly'>
-        <div className='h-1/2 text-violet-300'>
-          <h2 className='text-2xl font-bold mb-3'>Last attempt stats</h2>
-          <ul>
+
+      <div className='flex flex-col lg:flex-row w-full h-full items-center justify-evenly lg:space-x-4 space-y-8 lg:space-y-0'>
+        <div className='w-full lg:w-1/3 text-violet-300'>
+          <h2 className='text-xl lg:text-2xl font-bold mb-3 text-center'>
+            Last attempt stats
+          </h2>
+          <ul className='space-y-2'>
             <CustomLi
               liTitle='WPM'
               liText={stat.lastAttemptStats.WPM.toString()}
             />
-
             <CustomLi
               liTitle='Accuracy'
               liText={formatPercentage(stat.lastAttemptStats.accuracy)}
@@ -33,18 +35,22 @@ const Stat = () => {
           </ul>
         </div>
 
-        <div className='h-1/2 text-fuchsia-300'>
-          <h2 className='text-2xl font-bold mb-3'>Summary WPM stats</h2>
-          <ul>
+        <div className='w-full lg:w-1/3 text-fuchsia-300'>
+          <h2 className='text-xl lg:text-2xl font-bold mb-3 text-center'>
+            Summary WPM stats
+          </h2>
+          <ul className='space-y-2'>
             <CustomLi liTitle='Best WPM' liText={stat.bestWPM.toString()} />
             <CustomLi liTitle='Average WPM' liText={stat.avgWPM.toString()} />
             <CustomLi liTitle='Worst WPM' liText={stat.worstWPM.toString()} />
           </ul>
         </div>
 
-        <div className='h-1/2 text-pink-300'>
-          <h2 className='text-2xl font-bold mb-3'>Summary Accuracy stats</h2>
-          <ul>
+        <div className='w-full lg:w-1/3 text-pink-300'>
+          <h2 className='text-xl lg:text-2xl font-bold mb-3 text-center'>
+            Summary Accuracy stats
+          </h2>
+          <ul className='space-y-2'>
             <CustomLi
               liTitle='Best Accuracy'
               liText={formatPercentage(stat.bestAccuracy)}
@@ -61,7 +67,9 @@ const Stat = () => {
         </div>
       </div>
 
-      <CustomButton onClickFn={onClearClick} buttonText='clear stats' />
+      <div className='w-full flex justify-center mt-8'>
+        <CustomButton onClickFn={onClearClick} buttonText='Clear Stats' />
+      </div>
     </section>
   );
 };

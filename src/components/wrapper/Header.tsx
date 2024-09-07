@@ -9,7 +9,7 @@ const Header = () => {
           <div className='flex h-full items-center justify-center'>
             <div className='flex justify-center items-center w-1/2 h-full'>
               <img
-                className='h-8 drop-shadow-2xl '
+                className='h-4 md:h-8 drop-shadow-2xl'
                 src={navLogo}
                 alt='nav-logo'
               />
@@ -19,7 +19,7 @@ const Header = () => {
             </h4>
           </div>
         </NavLink>
-        <nav className='w-1/6 flex items-center justify-evenly'>
+        <nav className='w-1/2 md:w-1/6 flex items-center justify-evenly'>
           <NavLink
             to='/'
             className={({ isActive }) =>

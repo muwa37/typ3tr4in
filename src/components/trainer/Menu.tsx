@@ -29,7 +29,7 @@ const Menu = ({
       >
         {timeLeft}
       </p>
-      <div className=' flex items-center justify-start'>
+      <div className='flex items-center justify-start'>
         <h2 className='pr-2 italic text-red-300'>select time mode: </h2>
         <ul className='flex'>
           {timeMods.map(timeMode => (
