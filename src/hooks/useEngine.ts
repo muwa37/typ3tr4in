@@ -1,6 +1,7 @@
 import { selectTime } from '@/store/mode/selectors';
+import { modifyStats } from '@/store/stat/slice';
 import { TrainerState } from '@/types/common';
-import { countErrors } from '@/utils/helpers';
+import { calculateAccuracy, calculateWPM, countErrors } from '@/utils/helpers';
 import { useCallback, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import useCountdown from './useCountdown';
@@ -9,15 +10,16 @@ import useWords from './useWords';
 
 const useEngine = () => {
   const selectedTimeMode = useSelector(selectTime);
+
   const [trainerState, setTrainerState] = useState<TrainerState>('start');
+  const [errors, setErrors] = useState<number>(0);
+
   const { words, updateWords } = useWords();
   const { timeLeft, startCountdown, resetCountdown } =
     useCountdown(selectedTimeMode);
   const { typed, cursor, clearTyped, resetTotalTyped, totalTyped } = useTypings(
     trainerState !== 'end'
   );
-
-  const [errors, setErrors] = useState(0);
 
   const isStarting = trainerState === 'start' && cursor > 0;
   const isWordsFinished = cursor === words.length;
@@ -47,6 +49,10 @@ const useEngine = () => {
     if (timeLeft <= 0 && trainerState === 'run') {
       setTrainerState('end');
       sumErrors();
+      modifyStats({
+        WPM: calculateWPM(selectedTimeMode, totalTyped),
+        accuracy: calculateAccuracy(errors, totalTyped),
+      });
     }
   }, [timeLeft, trainerState, sumErrors]);
 
