@@ -32,7 +32,7 @@ const Menu = ({
       <div className=' flex items-center justify-start'>
         <h2 className='pr-2 italic text-red-300'>select time mode: </h2>
         <ul className='flex'>
-          {timeMods.map((timeMode) => (
+          {timeMods.map(timeMode => (
             <li key={timeMode}>
               <CustomButton
                 onClickFn={() => onSelectTimeModeClick(timeMode)}
@@ -43,7 +43,7 @@ const Menu = ({
           ))}
         </ul>
       </div>
-      <CustomButton onClickFn={onGenerateNewTextClick} buttonText='New text' />
+      <CustomButton onClickFn={onGenerateNewTextClick} buttonText='new text' />
     </div>
   );
 };

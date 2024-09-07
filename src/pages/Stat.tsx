@@ -3,6 +3,7 @@ import CustomLi from '@/components/ui/CustomLi';
 import PageTitle from '@/components/ui/PageTitle';
 import { selectStats } from '@/store/stat/selectors';
 import { clearStats } from '@/store/stat/slice';
+import { formatPercentage } from '@/utils/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Stat = () => {
@@ -17,7 +18,7 @@ const Stat = () => {
     <section className='flex flex-col w-full h-full items-center justify-evenly'>
       <PageTitle pageTitle='Statistics' />
       <div className='flex w-full h-full items-center justify-evenly'>
-        <div>
+        <div className='h-1/2 text-violet-300'>
           <h2 className='text-2xl font-bold mb-3'>Last attempt stats</h2>
           <ul>
             <CustomLi
@@ -27,12 +28,12 @@ const Stat = () => {
 
             <CustomLi
               liTitle='Accuracy'
-              liText={stat.lastAttemptStats.accuracy.toString()}
+              liText={formatPercentage(stat.lastAttemptStats.accuracy)}
             />
           </ul>
         </div>
 
-        <div>
+        <div className='h-1/2 text-fuchsia-300'>
           <h2 className='text-2xl font-bold mb-3'>Summary WPM stats</h2>
           <ul>
             <CustomLi liTitle='Best WPM' liText={stat.bestWPM.toString()} />
@@ -41,20 +42,20 @@ const Stat = () => {
           </ul>
         </div>
 
-        <div>
+        <div className='h-1/2 text-pink-300'>
           <h2 className='text-2xl font-bold mb-3'>Summary Accuracy stats</h2>
           <ul>
             <CustomLi
               liTitle='Best Accuracy'
-              liText={stat.bestAccuracy.toString()}
+              liText={formatPercentage(stat.bestAccuracy)}
             />
             <CustomLi
               liTitle='Average Accuracy'
-              liText={stat.avgAccuracy.toString()}
+              liText={formatPercentage(stat.avgAccuracy)}
             />
             <CustomLi
               liTitle='Worst Accuracy'
-              liText={stat.worstAccuracy.toString()}
+              liText={formatPercentage(stat.worstAccuracy)}
             />
           </ul>
         </div>
