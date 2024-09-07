@@ -32,41 +32,34 @@ const modeSlice = createSlice({
       state.lastAttemptStats.accuracy = 0;
     },
     modifyStats(state, action: PayloadAction<LastAttemptStats>) {
+      const { WPM, accuracy } = action.payload;
+
       state.lastAttemptStats = action.payload;
 
       state.attemptCount += 1;
 
-      state.bestWPM =
-        state.bestWPM === 0
-          ? action.payload.WPM
-          : action.payload.WPM > state.bestWPM && action.payload.WPM;
+      if (state.bestWPM === 0 || WPM > state.bestWPM) {
+        state.bestWPM = WPM;
+      }
+
+      if (state.worstWPM === 0 || WPM < state.worstWPM) {
+        state.worstWPM = WPM;
+      }
 
       state.avgWPM =
-        state.avgWPM === 0
-          ? action.payload.WPM
-          : state.avgWPM + action.payload.WPM / state.attemptCount;
+        (state.avgWPM * (state.attemptCount - 1) + WPM) / state.attemptCount;
 
-      state.worstWPM =
-        state.worstWPM === 0
-          ? action.payload.WPM
-          : action.payload.WPM < state.worstWPM && action.payload.WPM;
+      if (state.bestAccuracy === 0 || accuracy > state.bestAccuracy) {
+        state.bestAccuracy = accuracy;
+      }
 
-      state.bestAccuracy =
-        state.bestAccuracy === 0
-          ? action.payload.accuracy
-          : action.payload.accuracy > state.bestAccuracy &&
-            action.payload.accuracy;
+      if (state.worstAccuracy === 0 || accuracy < state.worstAccuracy) {
+        state.worstAccuracy = accuracy;
+      }
 
       state.avgAccuracy =
-        state.avgAccuracy === 0
-          ? action.payload.accuracy
-          : state.avgAccuracy + action.payload.accuracy / state.attemptCount;
-
-      state.worstAccuracy =
-        state.worstAccuracy === 0
-          ? action.payload.accuracy
-          : action.payload.accuracy < state.worstAccuracy &&
-            action.payload.accuracy;
+        (state.avgAccuracy * (state.attemptCount - 1) + accuracy) /
+        state.attemptCount;
     },
   },
 });

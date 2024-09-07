@@ -30,7 +30,7 @@ const Header = () => {
             home
           </NavLink>
           <NavLink
-            to='/stat'
+            to='/stats'
             className={({ isActive }) =>
               isActive ? 'text-green-700' : 'hover:text-blue-300'
             }
