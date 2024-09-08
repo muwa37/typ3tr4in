@@ -4,7 +4,7 @@
   "homepage": "https://gitname.github.io/react-gh-pages",
   "main": "index.js",
   "scripts": {
-    "predeploy": "npm run build:prod",
+    "predeploy": "npm run build:dev",
     "deploy": "gh-pages -d build",
     "start": "webpack serve --env mode=development",
     "build:dev": "webpack --env mode=development",
