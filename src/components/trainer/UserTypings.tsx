@@ -1,4 +1,3 @@
-import React from 'react';
 import Caret from './Caret';
 import Character from './Character';
 
@@ -8,11 +7,11 @@ type UserTypingsProps = {
   className?: string;
 };
 
-const UserTypings: React.FC<UserTypingsProps> = ({
+const UserTypings = ({
   userInput,
   words,
   className = '',
-}) => {
+}: UserTypingsProps) => {
   const typedCharacters = userInput.split('');
 
   const renderedCharacters = typedCharacters.map((char, index) => (

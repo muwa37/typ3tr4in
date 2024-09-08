@@ -1,8 +1,12 @@
 import { LastAttemptStats } from '@/types/common';
 import { StatState } from '@/types/store';
+import {
+  loadStatsFromLocalStorage,
+  saveStatsToLocalStorage,
+} from '@/utils/storage';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: StatState = {
+const initialState: StatState = loadStatsFromLocalStorage() || {
   attemptCount: 0,
   bestWPM: 0,
   avgWPM: 0,
@@ -30,6 +34,8 @@ const modeSlice = createSlice({
       state.worstAccuracy = 0;
       state.lastAttemptStats.WPM = 0;
       state.lastAttemptStats.accuracy = 0;
+
+      saveStatsToLocalStorage(state);
     },
     modifyStats(state, action: PayloadAction<LastAttemptStats>) {
       const { WPM, accuracy } = action.payload;
@@ -60,6 +66,8 @@ const modeSlice = createSlice({
       state.avgAccuracy =
         (state.avgAccuracy * (state.attemptCount - 1) + accuracy) /
         state.attemptCount;
+
+      saveStatsToLocalStorage(state);
     },
   },
 });

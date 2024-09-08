@@ -1,6 +1,6 @@
-type Props = { liTitle: string; liText?: string };
+type CustomLiProps = { liTitle: string; liText?: string };
 
-const CustomLi = ({ liTitle, liText }: Props) => {
+const CustomLi = ({ liTitle, liText }: CustomLiProps) => {
   return (
     <li className='text-xl flex'>
       <h3 className='font-bold underline'>

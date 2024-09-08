@@ -1,8 +1,8 @@
 import React from 'react';
 
-type Props = { trainerText: string };
+type WordsProps = { trainerText: string };
 
-const Words: React.FC<Props> = React.memo(({ trainerText }) => {
+const Words = React.memo(({ trainerText }: WordsProps) => {
   return <p className='h-[300px] flex flex-wrap'>{trainerText}</p>;
 });
 

@@ -1,6 +1,14 @@
-type Props = { onClickFn: () => void; buttonText: string; isActive?: boolean };
+type CustomButtonProps = {
+  onClickFn: () => void;
+  buttonText: string;
+  isActive?: boolean;
+};
 
-const CustomButton = ({ onClickFn, buttonText, isActive }: Props) => {
+const CustomButton = ({
+  onClickFn,
+  buttonText,
+  isActive,
+}: CustomButtonProps) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     onClickFn();
     e.currentTarget.blur();

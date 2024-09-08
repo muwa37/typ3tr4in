@@ -8,7 +8,7 @@ const Footer = () => {
         >
           github
         </a>
-        <span>/</span>
+        <span> / </span>
         <a
           className=' underline underline-offset-2 font-semibold text-green-700 hover:text-blue-300'
           href='https://t.me/muwa1337'

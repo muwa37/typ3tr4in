@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from '../ui/CustomButton';
 
-type Props = {
+type StatsModalProps = {
   isActive: boolean;
-  onModalCloseHandler: () => void;
+  onModalCloseClick: () => void;
 };
 
-const Modal = ({ isActive, onModalCloseHandler }: Props) => {
+const Modal = ({ isActive, onModalCloseClick }: StatsModalProps) => {
   const lastAttemptStats = useSelector(selectLastAttemptStats);
   const navigate = useNavigate();
 
@@ -21,12 +21,12 @@ const Modal = ({ isActive, onModalCloseHandler }: Props) => {
     <div
       className={
         isActive
-          ? 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-5/6 w-3/4 border-2 p-3 rounded-xl bg-stone-700 border-red-300 '
+          ? 'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-5/6 w-3/4 border-2 p-3 rounded-xl bg-stone-700 border-red-300'
           : 'hidden'
       }
     >
       <div className='absolute top-4 right-4'>
-        <CustomButton buttonText='close' onClickFn={onModalCloseHandler} />
+        <CustomButton buttonText='close' onClickFn={onModalCloseClick} />
       </div>
       <div className='p-2 h-full w-full flex flex-col items-center justify-evenly'>
         <div className='h-2/3 flex flex-col items-center justify-evenly'>

@@ -1,6 +1,6 @@
-type Props = { pageTitle: string };
+type PageTitleProps = { pageTitle: string };
 
-const PageTitle = ({ pageTitle }: Props) => {
+const PageTitle = ({ pageTitle }: PageTitleProps) => {
   return (
     <h1 className='mt-4 text-3xl md:text-6xl font-extrabold'>{pageTitle}</h1>
   );

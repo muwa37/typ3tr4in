@@ -1,8 +1,7 @@
+import useEngine from '@/hooks/useEngine';
 import { selectTime } from '@/store/mode/selectors';
 import { setTimeMode } from '@/store/mode/slice';
 import { TimeMode } from '@/types/common';
-
-import useEngine from '@/hooks/useEngine';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Menu from './Menu';
@@ -33,7 +32,7 @@ const Trainer = () => {
     reset();
   }, [reset]);
 
-  const onStatsModalCloseHandler = useCallback(() => {
+  const onStatsModalCloseClick = useCallback(() => {
     setIsStatsModalActive(false);
     reset();
   }, [reset]);
@@ -56,7 +55,7 @@ const Trainer = () => {
 
       <StatsModal
         isActive={isStatsModalActive}
-        onModalCloseHandler={onStatsModalCloseHandler}
+        onModalCloseClick={onStatsModalCloseClick}
       />
 
       {!isStatsModalActive && (
