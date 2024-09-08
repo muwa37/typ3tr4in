@@ -19,7 +19,7 @@ const Stat = () => {
       <PageTitle pageTitle='Statistics' />
 
       <div className='flex flex-col lg:flex-row w-full h-full items-center justify-evenly lg:space-x-4 space-y-8 lg:space-y-0'>
-        <div className='w-full lg:w-1/3 text-violet-300'>
+        <div className='w-full lg:h-1/3 lg:w-1/3 text-violet-300'>
           <h2 className='text-xl lg:text-2xl font-bold mb-3 text-center'>
             Last attempt stats
           </h2>
@@ -35,7 +35,7 @@ const Stat = () => {
           </ul>
         </div>
 
-        <div className='w-full lg:w-1/3 text-fuchsia-300'>
+        <div className='w-full lg:h-1/3 lg:w-1/3 text-fuchsia-300'>
           <h2 className='text-xl lg:text-2xl font-bold mb-3 text-center'>
             Summary WPM stats
           </h2>
@@ -46,7 +46,7 @@ const Stat = () => {
           </ul>
         </div>
 
-        <div className='w-full lg:w-1/3 text-pink-300'>
+        <div className='w-full lg:h-1/3 lg:w-1/3 text-pink-300'>
           <h2 className='text-xl lg:text-2xl font-bold mb-3 text-center'>
             Summary Accuracy stats
           </h2>

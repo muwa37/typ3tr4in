@@ -60,7 +60,7 @@ const Trainer = () => {
       />
 
       {!isStatsModalActive && (
-        <div className='max-w-[1000px] h-2/3 m-auto'>
+        <div className='max-w-[1000px] h-1/2 lg:h-2/3 md:m-auto'>
           <Menu
             trainerState={trainerState}
             timeLeft={timeLeft}
