@@ -1,0 +1,11 @@
+{
+  "app": {
+    "title": "Typing Trainer",
+    "stats": "Statistics",
+    "accuracy": "accuracy: {{accuracy}}%"
+  },
+  "menu": {
+    "selectTimeMode": "select time mode",
+    "newText": "new Text"
+  }
+}
