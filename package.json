@@ -2,6 +2,7 @@
   "name": "typ3tr4in",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "vercel url here",
   "scripts": {
     "start": "webpack serve --env mode=development",
     "build:dev": "webpack --env mode=development",
