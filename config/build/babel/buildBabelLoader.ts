@@ -18,7 +18,7 @@ export function buildBabelLoader({ mode }: BuildOptions) {
 
   return {
     test: /\.tsx?$/,
-    exclude: '/node_modules/',
+    exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
       options: {
@@ -32,7 +32,7 @@ export function buildBabelLoader({ mode }: BuildOptions) {
             },
           ],
         ],
-        plugins: plugins.length ? plugins : undefined,
+        plugins: plugins.length ? plugins : [],
       },
     },
   };
